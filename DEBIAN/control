@@ -5,6 +5,6 @@ Installed-Size: 780
 Maintainer: Ali Rıza KESKİN <aliriza.keskin@pardustopluluk.org>
 Architecture: all
 Version: 1.0
-Depends: adb, fastboot, openvpn
+Depends: android-tools-adb, adb-tools-fastboot, openvpn
 Description: android tools
  Katkılarından dolayı Furkan KARCIOGLU (SuperDroid) tesekkur ederim.
