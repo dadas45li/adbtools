@@ -1,0 +1,468 @@
+#!/usr/bin/python
+#-*-coding:utf8;-*-
+import os,time,signal,sys
+
+def uyari():
+	os.system("clear")
+	print " "
+	print "   ********************"
+	print "  * Lütfen bu programı *"
+	print "  * DÜZGÜNCE KULLANIN! *"
+	print "   ********************"
+	print " "
+	time.sleep(5)
+def x():
+	print "\n   ******************"
+	print "  * İşlem tamamlandı *"
+	print "   ******************\n"
+	time.sleep(2)
+	os.system("clear")
+def denetle():
+	os.system("clear")
+	print "\n  ****************************"
+	print " *                            *"
+	print " *  ADB Tools  by SuperDroid  *"
+	print " *                            *"
+	print "  ****************************\n"
+	print "  ****************************"	
+	print " *                            *"	
+	print " *  ADB etkinleştiriliyor...  *"
+	print " *                            *"
+	print "  ****************************\n \n"
+	os.system("adb start-server")
+	komut()
+def cikis():
+	os.system("clear")
+	print "\n  ****************************"
+	print " *                            *"
+	print " *       Programdan çık?      *"
+	print " *                            *"
+	print "  ****************************\n"
+	cik=raw_input("  [E/H]: ")
+	if cik=="E" or cik=="e":
+	      os.system("adb kill-server")
+	      os.system("clear")
+	      quit()
+	elif cik=="H" or cik=="h":
+	      komut()
+	else:
+		print "\n   ******************"
+		print "  *   Yanlış komut   *"
+		print "   ******************\n"
+	        cik()
+def komut():
+	os.system("clear")
+	print " "
+	print "  ****************************"
+	print " *                            *"
+	print " *  ADB Tools  by SuperDroid  *"
+	print " *                            *"
+	print "  ****************************"
+	print " "
+	print "    -Ana Menü"
+	print "   /"
+        print "   |"
+	print "  (1) Ekranı kapat/aç"
+	print "   |"
+	print "  (2) Cihazı yeniden başlat"
+        print "   |"
+	print "  (3) Cihazı hızlıca yeniden başlat"
+        print "   |"
+	print "  (4) Recovery modunu aç"
+        print "   |"
+	print "  (5) Bootloader/fastboot modunu aç"
+        print "   |"
+	print "  (6) Sistemi yedekle/geri yükle"
+	print "   |"
+	print "  (7) ADB internet paylaşımını aç"
+	print "   |"
+	print "  (8) ADB ile dosya gönder/al"
+	print "   |"
+	print "  (9) Uygulamadan çık"
+	print "   |"
+	a=raw_input("   \_> ")
+	if ";" in a:
+	    uyari()
+	    komut()
+	elif "&&" in a:
+	    uyari()
+	    komut()
+	elif " & " in a:
+	    uyari()
+	    komut()
+	elif "==" in a:
+	    uyari()
+	    komut()
+	elif "\"" in a:
+	    uyari()
+	    komut()
+	else:
+	  if a=="1":
+		os.system("adb shell input keyevent 26")
+		x()
+		komut()
+	  elif a=="2":
+		os.system("adb reboot")
+		x()
+		komut()
+	  elif a=="3":
+		os.system("adb shell killall -9 zygote")
+		x()
+		komut()
+	  elif a=="4":
+		os.system("adb reboot recovery")
+		x()
+		komut()
+	  elif a=="5":
+                os.system("adb reboot bootloader")
+                x()
+                komut()
+	  elif a=="6":
+                yedek()
+	  elif a=="7":
+		adbnet()
+	  elif a=="8":
+		adbdt()
+	  elif a=="9":
+		cikis()
+	  else:
+		print "\n   ******************"
+		print "  *   Yanlış komut   *"
+		print "   ******************\n"
+		time.sleep(2)
+		os.system("clear");
+		komut()
+def adbnet():
+	os.system("clear")
+        print " "
+        print "  ****************************"
+        print " *                            *"
+        print " *  ADB Tools  by SuperDroid  *"
+        print " *                            *"
+        print "  ****************************"
+        print " "
+        print "    -Azilink kurdunuz mu?"
+	print "   /"
+	print "   |"
+	print " (E/e) Evet"
+	print "   |"
+	print " (H/h) Hayır"
+	print "   |"
+	print " (G/g) Geri"
+	print "   |"
+	f=raw_input("   \_> ")
+	if ";" in f:
+            uyari()
+            adbnet()
+        elif "&&" in f:
+            uyari()
+            adbnet()
+        elif " & " in f:
+            uyari()
+            adbnet()
+        elif "==" in f:
+            uyari()
+            adbnet()
+        elif "\"" in f:
+            uyari()
+            adbnet()
+        else:
+	    if f=="H" or f=="h":
+		print "\n\n"
+		os.system('adb install -r /usr/share/adbnet/azilink.apk')
+		print "\n\n  Kurulum tamamlandı!"
+		print "\n\n  (!)  Cihazınızın uygulama menüsünden\n      \"Azilink\" uygulamasını çalıştırın\n       ve ticki işaretleyip\n        \"Enter\" butonuna basın"
+		raw_input("\n\n  > ")
+		os.system("clear")
+		print "\n\n  İnternet paylaşımı başlatılıyor...\n\n"
+		os.system("azilink")
+		print "\n\n  Paylaşım durduruldu!"
+		time.sleep(2)
+		os.system("clear")
+		adbnet()
+	    elif f=="E" or f=="e":
+		print "\n\n  (!)  Cihazınızın uygulama menüsünden\n       \"Azilink\" uygulamasını çalıştırın\n       ve ticki işaretleyip\n       \"Enter\"  butonuna basın"
+                raw_input("\n\n  > ")
+		os.system("clear")
+		print "\n\n  İnternet paylaşımı başlatılıyor...\n\n"
+                os.system("azilink")
+		print "\n\n  Paylaşım durduruldu!"
+		time.sleep(2)
+		os.system("clear")
+                adbnet()
+	    elif f=="G" or f=="g":
+		komut()
+	    else:
+		print "Girdiğiniz komut hatalı!"
+		adbnet()
+def adbdt():
+	os.system("clear")
+	print " "
+        print "  ****************************"
+        print " *                            *"
+        print " *  ADB Tools  by SuperDroid  *"
+        print " *                            *"
+        print "  ****************************"
+        print " "
+        print "    -İşlem seçin"
+        print "   /"
+        print "   |"
+	print "  (1) Dosya gönder"
+	print "   |"
+	print "  (2) Dosya al"
+	print "   |"
+	print "  (3) Geri"
+	print "   |"
+	g=raw_input("   \_> ")
+	if ";" in g:
+            uyari()
+            adbdt()
+        elif "&&" in g:
+            uyari()
+            adbdt()
+        elif " & " in g:
+            uyari()
+            adbdt()
+        elif "==" in g:
+            uyari()
+            adbdt()
+        elif "\"" in g:
+            uyari()
+            adbdt()
+        else:
+	    if g=="1":
+			os.system("clear")
+		        print " "
+        		print "  ****************************"
+        		print " *                            *"
+        		print " *  ADB Tools  by SuperDroid  *"
+        		print " *                            *"
+        		print "  ****************************"
+        		print " "
+        		print "    -Gönderilecek dosyanın konumunu ve verilecek adı yazın"
+        		print "   /"
+        		print "   |"
+			h=raw_input("   \_(dosya)> ")
+			i=raw_input("   \_(adi)> ")
+			if ";" in h or ";" in i:
+		            uyari()
+		            adbdt()
+		        elif "&&" in h or "&&" in i:
+		            uyari()
+		            adbdt()
+		        elif " & " in h or " & " in i:
+		            uyari()
+		            adbdt()
+		        elif "==" in h or "==" in i:
+		            uyari()
+		            adbdt()
+		        elif "\"" in h or "\"" in i:
+		            uyari()
+		            adbdt()
+			else:
+			    gonder="adb push "+h+" /sdcard/"+i
+			    os.system(gonder)
+			    print "\n\n İşlem tamamlandı"
+			    time.sleep(2)
+			    adbdt()
+	    elif g=="2":
+			os.system("clear")
+                        print " "
+                        print "  ****************************"
+                        print " *                            *"
+                        print " *  ADB Tools  by SuperDroid  *"
+                        print " *                            *"
+                        print "  ****************************"
+                        print " "
+                        print "    -Alınacak dosyanın konumunu yazın"
+                        print "   /"
+                        print "   |"
+                        j=raw_input("   \_(dosya)> ")
+                        if ";" in j:
+                            uyari() 
+                            adbdt()    
+                        elif "&&" in j:
+                            uyari()
+                            adbdt()    
+                        elif " & " in j:
+                            uyari()
+                            adbdt()    
+                        elif "==" in j:
+                            uyari()
+                            adbdt()    
+                        elif "\"" in j:
+                            uyari()
+                            adbdt()
+                        else:
+                            gonder="adb pull "+h
+                            os.system(gonder)
+			    print "\n\n İşlem tamamlandı" 
+                            time.sleep(2)
+                            adbdt()
+	    elif g=="3":
+			komut()
+
+	    else:
+			print "Girdiğiniz komut hatalı!"
+			adbdt()
+
+
+
+
+def yedek2():
+	os.system("clear")
+	print " "
+	print "  ****************************"
+	print " *                            *"
+	print " *  ADB Tools  by SuperDroid  *"
+	print " *                            *"
+	print "  ****************************"
+	print " "
+	print "    -Başka bölüm adı yazın:"
+	print "   /"
+	print "   |"
+	d=raw_input("   \_> ")
+	if ";" in d:
+	    uyari()
+	    yedek2()
+	elif "&&" in d:
+	    uyari()
+	    yedek2()
+	elif " & " in d:
+	    uyari()
+	    yedek2()
+	elif "==" in d:
+	    uyari()
+	    yedek2()
+	elif "\"" in d:
+	    uyari()
+	    yedek2()
+	else:
+		ydk="adb shell dd if=/dev/block/platform/msm_sdcc.1/by-name/"+d+"of=/opt/superbackup/"+d+".img"
+		os.system(ydk)
+		x()
+		yedek2()
+def yedek3():
+	os.system("clear")
+	print " "
+	print "  ****************************"
+	print " *                            *"
+	print " *  ADB Tools  by SuperDroid  *"
+	print " *                            *"
+	print "  ****************************"
+	print " "
+	print "    -Başka bölüm adı yazın:"
+	print "   /"
+	print "   |"
+	e=raw_input("   \_> ")
+	if ";" in e:
+	    uyari()
+	    yedek3()
+	elif "&&" in e:
+	    uyari()
+	    yedek3()
+	elif " & " in e:
+	    uyari()
+	    yedek3()
+	elif "==" in e:
+	    uyari()
+	    yedek3()
+	elif "\"" in e:
+	    uyari()
+	    yedek3()
+	else:
+		sil="adb shell dd if=/dev/zero of=/dev/block/platform/msm_sdcc.1/by-name/"+e
+		os.system(sil)
+		gy="adb shell dd if=/opt/superbackup/"+e+".img"+"of=/dev/block/platform/msm_sdcc.1/by-name/"+e
+		os.system(gy)
+		x()
+		yedek3()
+def yedek():
+	os.system("clear")
+	print " "
+	print "  ****************************"
+	print " *                            *"
+	print " *  ADB Tools  by SuperDroid  *"
+	print " *                            *"
+	print "  ****************************"
+	print " "
+	print "    -Sistemi yedekle/geri yükle"
+	print "   /"
+        print "   |"
+	print "  (!)------------------------------"
+	print "   |  Sadece Snapdragon işlemcili  \ "
+	print "   |  cihazlar içindir. Bu özellik  | "
+	print "   |  henüz beta aşamasındadır ve   |"
+	print "   |  oluşabilecek sorunlardan      |"
+	print "   |  sadece SİZ sorumlusunuz!     / "
+	print "  (!)-------------------------------"
+	print "   |"
+	print "  (1) /system bölümünü yedekle"
+	print "   |"
+	print "  (2) /data bölümünü yedekle"
+        print "   |"
+	print "  (3) /system bülümünü geri yükle"
+        print "   |"
+	print "  (4) /data bülümünü geri yükle"
+        print "   |"
+	print "  (5) Başka bir bölümü yedekle"
+        print "   |"
+	print "  (6) Başka bir bölümü geri yükle"
+	print "   |"
+	print "  (0) Ana menüye dön"
+	print "   |"
+	b=raw_input("   \_> ")
+	if ";" in b:
+	    uyari()
+	    yedek()
+	elif "&&" in b:
+	    uyari()
+	    yedek()
+	elif " & " in b:
+	    uyari()
+	    yedek()
+	elif "==" in b:
+	    uyari()
+	    yedek()
+	elif "\"" in b:
+	    uyari()
+	    yedek()
+	else:
+	  if b=="1":
+		os.system("adb shell dd if=/dev/block/platform/msm_sdcc.1/by-name/system of=/opt/superbackup/system.img")
+		x()
+		yedek()
+	  elif b=="2":
+		os.system("adb shell dd if=/dev/block/platform/msm_sdcc.1/by-name/userdata of=/opt/superbackup/data.img")
+		x()
+		yedek()
+	  elif b=="3":
+		os.system("adb shell dd if=/dev/zero of=/dev/block/platform/msm_sdcc.1/by-name/system")
+		os.system("adb shell dd if=/opt/superbackup/system.img of=/dev/block/platform/msm_sdcc.1/by-name/system")		
+		x()
+		yedek()
+	  elif b=="4":
+		os.system("adb shell dd if=/dev/zero of=/dev/block/platform/msm_sdcc.1/by-name/data")
+		os.system("adb shell dd if=/opt/superbackup/data.img of=/dev/block/platform/msm_sdcc.1/by-name/userdata")
+		x()
+		yedek()
+	  elif b=="5":
+                yedek2()
+	  elif b=="6":
+               yedek3()
+	  elif b=="0":
+		komut()
+	  else:
+		print "\n   ******************"
+		print "*   Yanlış komut   *"
+		print "   ******************\n"
+		time.sleep(2)
+		os.system("clear");
+		yedek()
+
+def sigint_handler(signal, frame):
+    print 'Interrupted'
+    sys.exit(0)
+signal.signal(signal.SIGINT, signal.SIG_IGN)
+
+denetle()
